@@ -48,6 +48,8 @@ public class Main {
         private static final String KEY_HELP = "--help";
         private static final String KEY_HELP_ALIAS = "-h";
 
+        private static final String KEY_PERSONALIZED_PR = "--personalized";
+        private static final String KEY_PERSONALIZED_PR_ALIAS = "--p";
         public static void parse(String []args){
             System.out.println("Arguments:");
             for (String a:args)
@@ -68,7 +70,9 @@ public class Main {
                         OUT_PATH = value.trim();
                     else if (key.equals(KEY_HELP) || key.equals(KEY_HELP_ALIAS))
                         printHelp(null);
-                    else
+                    else if ( key.equals(KEY_PERSONALIZED_PR) ||  key.equals(KEY_PERSONALIZED_PR_ALIAS) ) {
+                        IS_BASIC_PAGERANK = Integer.parseInt(value) <= 0;
+                    } else
                         printHelp("Invalid command options");
 
                 }
@@ -88,6 +92,7 @@ public class Main {
             System.out.println("    " + KEY_OUTPUT + "   (" + KEY_OUTPUT_ALIAS + ")    <output>      The directory of the output result [REQUIRED]");
             System.out.println("    " + KEY_DAMPING + "  (" + KEY_DAMPING_ALIAS + ")    <damping>     The damping factor [OPTIONAL]");
             System.out.println("    " + KEY_LIMIT_LOOP + "    (" + KEY_LIMIT_LOOP_ALIAS + ")    <iterations>  The amount of iterations [OPTIONAL]");
+            System.out.println("    " + KEY_PERSONALIZED_PR + "    (" + KEY_PERSONALIZED_PR_ALIAS + ")    <personalized>  Run personalized pagerank or not (default run pagerank) [OPTIONAL]");
             System.out.println("    " + KEY_HELP + "     (" + KEY_HELP_ALIAS + ")                  Display the help text\n");
             System.exit(0);
         }
