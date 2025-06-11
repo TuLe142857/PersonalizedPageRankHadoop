@@ -184,7 +184,7 @@ public class PageRank {
             // phát lại cấu trúc đồ thị
             String outLinks = line.substring(parts[0].length() +parts[1].length() + Constants.SEPARATOR.length()*2);
             textK.set(page);
-            textV.set(Constants.LINK_SEPERATOR + outLinks);
+            textV.set(Constants.LINK_SEPARATOR + outLinks);
             context.write(textK, textV);
 
         }
@@ -201,8 +201,8 @@ public class PageRank {
             for(Text v: values){
                 String line = v.toString();
                 // Nếu là cấu trúc đồ thị (có link sep)
-                if (line.startsWith(Constants.LINK_SEPERATOR)){
-                    outLinks = line.substring(Constants.SEPARATOR.length());
+                if (line.startsWith(Constants.LINK_SEPARATOR)){
+                    outLinks = line.substring(Constants.LINK_SEPARATOR.length());
                 }
                 // Nếu là sharePageRank
                 else {
