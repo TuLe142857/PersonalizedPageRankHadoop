@@ -37,12 +37,9 @@ public class GraphUtils {
     }
 
     public static class CountNodeReducer extends Reducer<Text, Text, Text, Text> {
-        public static enum UNIQUE_NODE_COUNTERS {
-            TOTAL_UNIQUE_NODES
-        }
         @Override
         protected void reduce(Text key, Iterable<Text> values, Context context) throws IOException, InterruptedException {
-            context.getCounter(UNIQUE_NODE_COUNTERS.TOTAL_UNIQUE_NODES).increment(1);
+            context.getCounter(Constants.Counters.UNIQUE_NODE_COUNTER).increment(1);
         }
     }
 
@@ -76,7 +73,7 @@ public class GraphUtils {
         }
 
         return job.getCounters()
-                .findCounter(CountNodeReducer.UNIQUE_NODE_COUNTERS.TOTAL_UNIQUE_NODES)
+                .findCounter(Constants.Counters.UNIQUE_NODE_COUNTER)
                 .getValue();
     }
 }

@@ -1,6 +1,10 @@
 package com.tule;
 
 public class Constants {
+    public static enum Counters{
+        UNIQUE_NODE_COUNTER,
+        SOURCE_NODE_COUNTER
+    }
 
     //Config.set<...>()
     public static String TOTAL_NODE_CONFIG = "TOTAL_NODE_CONFIGURATION";
