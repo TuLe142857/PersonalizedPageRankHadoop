@@ -11,6 +11,7 @@ services:
     volumes:
       - hadoop_namenode:/hadoop/dfs/name
       - ./target:/mnt/target
+      - ./output:/mnt/output
       - ./data:/mnt/data
     environment:
       - CLUSTER_NAME=test

@@ -85,6 +85,9 @@ public class GraphUtils {
         @Override
         protected void map(LongWritable key, Text value, Mapper<LongWritable, Text, Text, Text>.Context context) throws IOException, InterruptedException {
             String line = value.toString();
+            if (line.startsWith("#") || line.trim().isEmpty()) {
+                return;
+            }
             String []parts = line.split(Constants.SEPARATOR);
             if (parts.length == 1){
                 textK.set(parts[0]);

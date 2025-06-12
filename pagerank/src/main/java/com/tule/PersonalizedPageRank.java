@@ -239,7 +239,13 @@ public class PersonalizedPageRank {
                 // graph struct
                 if (line.startsWith(Constants.LINK_SEPARATOR)){
                     graphStruct = line.substring(Constants.LINK_SEPARATOR.length());
-                    teleportProb = Double.parseDouble(graphStruct.split(Constants.SEPARATOR)[0]);
+                    try {
+                        teleportProb = Double.parseDouble(graphStruct.split(Constants.SEPARATOR)[0]);
+                    }
+                    catch (Exception e){
+                        return;
+                    }
+
                 }
                 // share PPR
                 else {
